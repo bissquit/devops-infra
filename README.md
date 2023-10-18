@@ -8,4 +8,4 @@ Demo DevOps repository to show workflows and approaches
 
 ## Contribution
 
-Read [CONTRIBUTION.md](CONTRIBUTION.md)
+Read [CONTRIBUTING.md](CONTRIBUTING.md)
