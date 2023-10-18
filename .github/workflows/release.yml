@@ -1,0 +1,31 @@
+---
+
+name: "Release"
+
+on:
+  push:
+    branches:
+      - master
+
+env:
+  GH_TOKEN: ${{ github.token }}
+
+jobs:
+  release:
+    runs-on: ubuntu-20.04
+    permissions: write-all
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install prerequisites
+        run: |
+          npm install -g \
+            semantic-release@22.0.5 \
+            @semantic-release/commit-analyzer@11.0.0 \
+            @semantic-release/release-notes-generator@12.0.0 \
+            @semantic-release/github@9.2.0 \
+            conventional-changelog-conventionalcommits@7.0.2
+
+      - name: Run release
+        run: |
+          npx semantic-release

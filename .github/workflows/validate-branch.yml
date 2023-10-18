@@ -1,0 +1,25 @@
+---
+
+name: "Validate branch name"
+
+on:
+  push:
+    branches-ignore:
+      - master
+
+jobs:
+  validate-branch:
+    runs-on: ubuntu-20.04
+    steps:
+      - run: env
+      - uses: actions/checkout@v4
+
+      - name: Validate branch
+        run: |
+          branch_name_format='issue-[0-9]*/.*'
+          error_message="Error! Branch name ${GITHUB_REF_NAME} doesn't fit regex pattern ${branch_name_format}"
+          
+          if [[ ! ${GITHUB_REF_NAME} =~ $branch_name_format ]]; then
+            echo ${error_message}
+            exit 1
+          fi
