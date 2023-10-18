@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+branch_name=$(git rev-parse --abbrev-ref HEAD)
+branch_name_format='issue-[0-9]*/.*'
+error_message="Error! Branch name ${branch_name} doesn't fit regex pattern ${branch_name_format}"
+
+if [[ ! ${branch_name} =~ $branch_name_format ]]; then
+  echo ${error_message}
+  exit 1
+fi
