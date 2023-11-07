@@ -1,6 +1,6 @@
 # devops-infra
 
-DevOps infra
+DevOps infra demo repository
 
 # devops-demo
 
